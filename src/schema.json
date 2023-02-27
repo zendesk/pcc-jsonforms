@@ -1,32 +1,65 @@
 {
   "type": "object",
   "properties": {
-    "name": {
-      "type": "string",
-      "minLength": 1
-    },
-    "description": {
-      "title": "Long Description",
+    "raw_title": {
+      "title": "Title",
       "type": "string"
     },
-    "done": {
+    "url": {
+      "type": "string"
+    },
+    "id": {
+      "type": "integer"
+    },
+    "title ": {
+      "type": "string"
+    },
+    "active": {
       "type": "boolean"
     },
-    "due_date": {
-      "type": "string",
-      "format": "date"
+    "updated_at": {
+      "type": "string"
     },
-    "rating": {
-      "type": "integer",
-      "maximum": 5
+    "created_at": {
+      "type": "string"
     },
-    "recurrence": {
-      "type": "string",
-      "enum": ["Never", "Daily", "Weekly", "Monthly"]
+    "default": {
+      "type": "boolean"
     },
-    "recurrence_interval": {
+    "actions": {
+      "type": "array"
+    },
+    "conditions": {
+      "type": "object",
+      "properties": {
+        "all": {
+          "type": "array"
+        },
+        "any": {
+          "type": "array"
+        }
+      }
+    },
+    "description": {
+      "type": "string"
+    },
+    "position": {
       "type": "integer"
+    },
+    "usage_1h": {
+      "type": "integer"
+    },
+    "usage_24h": {
+      "type": "integer"
+    },
+    "usage_7d": {
+      "type": "integer"
+    },
+    "usage_30d": {
+      "type": "integer"
+    },
+    "category_id": {
+      "type": "string"
     }
-  },
-  "required": ["name", "due_date"]
+  }
 }
