@@ -3,7 +3,8 @@ import { JsonForms } from '@jsonforms/react';
 import Grid from '@mui/material/Grid';
 import './App.css';
 import schema from './schema.json';
-import triggerData from './triggerData.json';
+import rawData from './rawData.json';
+import jsltData from './jsltData.json';
 import {
   materialCells,
   materialRenderers,
@@ -50,7 +51,7 @@ const renderers = [
 
 const App = () => {
   const classes = useStyles();
-  const [data, setData] = useState<any>(triggerData);
+  const [data, setData] = useState<any>(jsltData);
   const stringifiedData = useMemo(() => JSON.stringify(data, null, 2), [data]);
 
   const clearData = () => {

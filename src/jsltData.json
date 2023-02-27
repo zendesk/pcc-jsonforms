@@ -1,0 +1,53 @@
+{
+ "trigger" : {
+   "raw_title" : "some actions {{current_user}}",
+   "description" : "some of the actions",
+   "active" : true,
+   "category_id" : "a Trigger Category",
+   "conditions" : {
+     "all" : [ {
+       "field" : "status",
+       "operator" : "is",
+       "value" : "new"
+     }, {
+       "field" : "organization.custom_fields.org_dropdown",
+       "operator" : "is",
+       "value" : "Dropdown Option"
+     }, {
+       "field" : "custom_fields_TicketFieldA",
+       "operator" : "present",
+       "value" : ""
+     } ],
+     "any" : [ {
+       "field" : "brand_id",
+       "operator" : "is_not",
+       "value" : "Brand1"
+     }, {
+       "field" : "ticket_form_id",
+       "operator" : "changed"
+     }, {
+       "field" : "number_of_incidents",
+       "operator" : "less_than",
+       "value" : "7"
+     } ]
+   },
+   "actions" : [ {
+     "field" : "status",
+     "value" : "open"
+   }, {
+     "field" : "brand_id",
+     "value" : "Brand2"
+   }, {
+     "field" : "organization.custom_fields.org_date",
+     "value" : "2021-09-23"
+   }, {
+     "field" : "notification_target",
+     "value" : [ "Target2", [ [ "a", "b" ] ] ]
+   }, {
+     "field" : "notification_webhook",
+     "value" : [ "Webhook1", "message" ]
+   } ],
+   "position" : 9999
+ }
+}
+
