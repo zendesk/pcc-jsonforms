@@ -6,6 +6,7 @@ import Typography from '@mui/material/Typography';
 import logo from './logo.svg';
 import './App.css';
 import schema from './schema.json';
+import triggerData from './triggerData.json';
 import {
   materialCells,
   materialRenderers,
@@ -40,14 +41,6 @@ const useStyles = makeStyles({
   },
 });
 
-const initialData = {
-  name: 'Send email to Adrian',
-  description: 'Confirm if you have passed the subject\nHereby ...',
-  done: true,
-  recurrence: 'Daily',
-  rating: 3,
-};
-
 const renderers = [
   ...materialRenderers,
   //register custom renderers
@@ -56,7 +49,7 @@ const renderers = [
 
 const App = () => {
   const classes = useStyles();
-  const [data, setData] = useState<any>(initialData);
+  const [data, setData] = useState<any>(triggerData);
   const stringifiedData = useMemo(() => JSON.stringify(data, null, 2), [data]);
 
   const clearData = () => {

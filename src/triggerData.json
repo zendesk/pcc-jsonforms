@@ -1,0 +1,73 @@
+{
+  "trigger": {
+    "url": "https://support.zd-dev.com/api/v2/triggers/90001.json",
+    "id": 90001,
+    "title": "some actions xxxx",
+    "active": true,
+    "category_id": "1000001759821",
+    "updated_at": "2021-09-28T01:50:40Z",
+    "created_at": "2021-09-27T06:20:36Z",
+    "actions": [
+      {
+        "field": "status",
+        "value": "open"
+      },
+      {
+        "field": "brand_id",
+        "value": "10000000000001"
+      },
+      {
+        "field": "organization.custom_fields.org_date",
+        "value": "2021-09-23"
+      },
+      {
+        "field": "notification_target",
+        "value": ["10002", [["a", "b"]]]
+      },
+      {
+        "field": "notification_webhook",
+        "value": ["10003", "message"]
+      }
+    ],
+    "conditions": {
+      "all": [
+        {
+          "field": "status",
+          "operator": "is",
+          "value": "new"
+        },
+        {
+          "field": "organization.custom_fields.org_dropdown",
+          "operator": "is",
+          "value": "100013",
+          "zrn": "zen:organization/custom_field/dropdown:103"
+        },
+        {
+          "field": "custom_fields_1000351",
+          "operator": "present",
+          "value": ""
+        }
+      ],
+      "any": [
+        {
+          "field": "brand_id",
+          "operator": "is_not",
+          "value": "10001"
+        },
+        {
+          "field": "ticket_form_id",
+          "operator": "changed",
+          "value": null
+        },
+        {
+          "field": "number_of_incidents",
+          "operator": "less_than",
+          "value": "7"
+        }
+      ]
+    },
+    "description": "some of the actions",
+    "position": 9999,
+    "raw_title": "some actions {{current_user}}"
+  }
+}
