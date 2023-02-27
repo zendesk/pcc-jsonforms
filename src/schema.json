@@ -1,115 +1,103 @@
 {
   "type": "object",
   "properties": {
-    "raw_title": {
-      "title": "Title",
-      "type": "string"
-    },
-    "url": {
-      "type": "string"
-    },
-    "id": {
-      "type": "integer"
-    },
-    "title ": {
-      "type": "string"
-    },
-    "active": {
-      "type": "boolean"
-    },
-    "updated_at": {
-      "type": "string"
-    },
-    "created_at": {
-      "type": "string"
-    },
-    "default": {
-      "type": "boolean"
-    },
-    "actions": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "title": "Action",
-        "properties": {
-          "field": {
-            "type": "string",
-            "title": "Field"
-          },
-          "value": {
-            "type": "string",
-            "title": "Value"
-          }
-        }
-      }
-    },
-    "conditions": {
+    "trigger": {
       "type": "object",
       "properties": {
-        "all": {
+        "raw_title": {
+          "title": "Title",
+          "type": "string"
+        },
+        "active": {
+          "type": "boolean"
+        },
+        "default": {
+          "type": "boolean"
+        },
+        "description": {
+          "type": "string"
+        },
+        "position": {
+          "type": "integer"
+        },
+        "category_id": {
+          "type": "string"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time",
+          "title": "Created"
+        },
+        "updated_at": {
+          "type": "string",
+          "format": "date-time",
+          "title": "Last updated"
+        },
+        "actions": {
           "type": "array",
           "items": {
             "type": "object",
-            "title": "Condition",
+            "title": "Action",
             "properties": {
               "field": {
                 "type": "string",
                 "title": "Field"
               },
-              "operator": {
-                "type": "string",
-                "title": "Operator"
-              },
               "value": {
-                "type": "string",
-                "title": "Value"
+                "title": "Value",
+                "type": "string"
               }
             }
           }
         },
-        "any": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "title": "Condition",
-            "properties": {
-              "field": {
-                "type": "string",
-                "title": "Field"
-              },
-              "operator": {
-                "type": "string",
-                "title": "Operator"
-              },
-              "value": {
-                "type": "string",
-                "title": "Value"
+        "conditions": {
+          "type": "object",
+          "properties": {
+            "all": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "title": "Condition",
+                "properties": {
+                  "field": {
+                    "type": "string",
+                    "title": "Field"
+                  },
+                  "operator": {
+                    "type": "string",
+                    "title": "Operator"
+                  },
+                  "value": {
+                    "type": "string",
+                    "title": "Value"
+                  }
+                }
+              }
+            },
+            "any": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "title": "Condition",
+                "properties": {
+                  "field": {
+                    "type": "string",
+                    "title": "Field"
+                  },
+                  "operator": {
+                    "type": "string",
+                    "title": "Operator"
+                  },
+                  "value": {
+                    "type": "string",
+                    "title": "Value"
+                  }
+                }
               }
             }
           }
         }
       }
-    },
-    "description": {
-      "type": "string"
-    },
-    "position": {
-      "type": "integer"
-    },
-    "usage_1h": {
-      "type": "integer"
-    },
-    "usage_24h": {
-      "type": "integer"
-    },
-    "usage_7d": {
-      "type": "integer"
-    },
-    "usage_30d": {
-      "type": "integer"
-    },
-    "category_id": {
-      "type": "string"
     }
   }
 }
