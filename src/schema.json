@@ -27,16 +27,66 @@
       "type": "boolean"
     },
     "actions": {
-      "type": "array"
+      "type": "array",
+      "items": {
+        "type": "object",
+        "title": "Action",
+        "properties": {
+          "field": {
+            "type": "string",
+            "title": "Field"
+          },
+          "value": {
+            "type": "string",
+            "title": "Value"
+          }
+        }
+      }
     },
     "conditions": {
       "type": "object",
       "properties": {
         "all": {
-          "type": "array"
+          "type": "array",
+          "items": {
+            "type": "object",
+            "title": "Condition",
+            "properties": {
+              "field": {
+                "type": "string",
+                "title": "Field"
+              },
+              "operator": {
+                "type": "string",
+                "title": "Operator"
+              },
+              "value": {
+                "type": "string",
+                "title": "Value"
+              }
+            }
+          }
         },
         "any": {
-          "type": "array"
+          "type": "array",
+          "items": {
+            "type": "object",
+            "title": "Condition",
+            "properties": {
+              "field": {
+                "type": "string",
+                "title": "Field"
+              },
+              "operator": {
+                "type": "string",
+                "title": "Operator"
+              },
+              "value": {
+                "type": "string",
+                "title": "Value"
+              }
+            }
+          }
         }
       }
     },
