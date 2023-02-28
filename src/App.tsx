@@ -4,6 +4,7 @@ import Grid from '@mui/material/Grid';
 import './App.css';
 import schema from './schema.json';
 import jsltData from './jsltData.json';
+import rawData from './rawData.json';
 import {
   materialCells,
   materialRenderers,
@@ -49,6 +50,7 @@ const GenericRendererWithProps = withJsonFormsControlProps(GenericRenderer);
 const genericRendering = [
   { tester: genericTester, renderer: GenericRendererWithProps },
 ];
+const stringifiedRawData = JSON.stringify(rawData, null, 2);
 
 const App = () => {
   const classes = useStyles();
@@ -85,6 +87,12 @@ const App = () => {
               readonly
               validationMode='NoValidation'
             />
+          </div>
+        </Grid>
+        <Grid item sm={12}>
+          <h4 className={classes.title}>Raw JSON</h4>
+          <div className={classes.dataContent}>
+            <pre>{stringifiedRawData}</pre>
           </div>
         </Grid>
       </Grid>
