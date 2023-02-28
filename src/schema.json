@@ -8,20 +8,15 @@
           "title": "Title",
           "type": "string"
         },
-        "active": {
-          "type": "boolean"
-        },
-        "default": {
-          "type": "boolean"
-        },
         "description": {
           "type": "string"
         },
-        "position": {
-          "type": "integer"
+        "active": {
+          "type": "boolean"
         },
         "category_id": {
-          "type": "string"
+          "type": "string",
+          "title": "Category"
         },
         "created_at": {
           "type": "string",
@@ -32,23 +27,6 @@
           "type": "string",
           "format": "date-time",
           "title": "Last updated"
-        },
-        "actions": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "title": "Action",
-            "properties": {
-              "field": {
-                "type": "string",
-                "title": "Field"
-              },
-              "value": {
-                "title": "Value",
-                "type": "string"
-              }
-            }
-          }
         },
         "conditions": {
           "type": "object",
@@ -96,6 +74,26 @@
               }
             }
           }
+        },
+        "actions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "title": "Action",
+            "properties": {
+              "field": {
+                "type": "string",
+                "title": "Field"
+              },
+              "value": {
+                "title": "Value",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "position": {
+          "type": "integer"
         }
       }
     }
