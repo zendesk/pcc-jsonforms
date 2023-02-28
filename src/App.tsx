@@ -45,10 +45,13 @@ const useStyles = makeStyles({
 
 const rootNodeTester: Tester = (_uischema, schema, context) =>
   schema === context.rootSchema;
-const genericTester: RankedTester = rankWith(3, rootNodeTester);
+// rank=2 := don't apply before rank=1, or after rank=3
+// (n.b. with rank=3, the `materialRenderers` are applied)
+const genericFallback: RankedTester = rankWith(2, rootNodeTester);
 const GenericRendererWithProps = withJsonFormsControlProps(GenericRenderer);
-const genericRendering = [
-  { tester: genericTester, renderer: GenericRendererWithProps },
+const bundledRendering = [
+  ...materialRenderers,
+  { tester: genericFallback, renderer: GenericRendererWithProps },
 ];
 const stringifiedRawData = JSON.stringify(rawData, null, 2);
 
@@ -83,7 +86,7 @@ const App = () => {
             <JsonForms
               schema={schema}
               data={data}
-              renderers={genericRendering}
+              renderers={bundledRendering}
               readonly
               validationMode='NoValidation'
             />
