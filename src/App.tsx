@@ -1,17 +1,16 @@
-import { Fragment, useState, useMemo } from 'react';
-import { JsonForms } from '@jsonforms/react';
+import { Fragment, useState } from 'react';
+import { JsonForms, withJsonFormsControlProps } from '@jsonforms/react';
 import Grid from '@mui/material/Grid';
 import './App.css';
 import schema from './schema.json';
-import rawData from './rawData.json';
 import jsltData from './jsltData.json';
 import {
   materialCells,
   materialRenderers,
 } from '@jsonforms/material-renderers';
-import RatingControl from './RatingControl';
-import ratingControlTester from './ratingControlTester';
 import { makeStyles } from '@mui/styles';
+import { GenericRenderer } from './GenericRenderer';
+import { RankedTester, rankWith, Tester } from '@jsonforms/core';
 
 const useStyles = makeStyles({
   '&$disabled': {
@@ -43,20 +42,17 @@ const useStyles = makeStyles({
   },
 });
 
-const renderers = [
-  ...materialRenderers,
-  //register custom renderers
-  { tester: ratingControlTester, renderer: RatingControl },
+const rootNodeTester: Tester = (_uischema, schema, context) =>
+  schema === context.rootSchema;
+const genericTester: RankedTester = rankWith(3, rootNodeTester);
+const GenericRendererWithProps = withJsonFormsControlProps(GenericRenderer);
+const genericRendering = [
+  { tester: genericTester, renderer: GenericRendererWithProps },
 ];
 
 const App = () => {
   const classes = useStyles();
-  const [data, setData] = useState<any>(jsltData);
-  const stringifiedData = useMemo(() => JSON.stringify(data, null, 2), [data]);
-
-  const clearData = () => {
-    setData({});
-  };
+  const [data] = useState<any>(jsltData);
 
   return (
     <Fragment>
@@ -66,17 +62,31 @@ const App = () => {
         spacing={1}
         className={classes.container}
       >
-        <div className={classes.demoform}>
-          <JsonForms
-            schema={schema}
-            data={data}
-            renderers={renderers}
-            cells={materialCells}
-            onChange={({ errors, data }) => setData(data)}
-            readonly
-            validationMode='NoValidation'
-          />
-        </div>
+        <Grid item sm={6}>
+          <h4 className={classes.title}>JSON Schema Render</h4>
+          <div className={classes.demoform}>
+            <JsonForms
+              schema={schema}
+              data={data}
+              renderers={materialRenderers}
+              cells={materialCells}
+              readonly
+              validationMode='NoValidation'
+            />
+          </div>
+        </Grid>
+        <Grid item sm={6}>
+          <h4 className={classes.title}>Generic Table Render</h4>
+          <div className={classes.demoform}>
+            <JsonForms
+              schema={schema}
+              data={data}
+              renderers={genericRendering}
+              readonly
+              validationMode='NoValidation'
+            />
+          </div>
+        </Grid>
       </Grid>
     </Fragment>
   );
