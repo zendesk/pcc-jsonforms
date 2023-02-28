@@ -1,15 +1,14 @@
-import React from 'react'
-import { GenericProperty } from 'src/DeployTriggersApp/pages/GenericRenderer/GenericProperty'
+import React from 'react';
+import { GenericProperty } from './GenericProperty';
 
 export interface GenericRendererProps {
-  json: string
+  data: any;
 }
 
-export const GenericRenderer: React.FC<GenericRendererProps> = ({ json }) => {
-  const data = JSON.parse(json)
+export const GenericRenderer: React.FC<GenericRendererProps> = ({ data }) => {
   return (
     <>
       <GenericProperty data={data}></GenericProperty>
     </>
-  )
-}
+  );
+};
